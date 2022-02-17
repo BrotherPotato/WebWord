@@ -1,0 +1,7 @@
+    </head>
+    <body>
+        <div class="menu">  
+            <h1 id="title" class="center"> LiURDLE </h1>
+			<a id="settings"><img src="images/stats.png" alt="stats"></a>
+        </div>
+        <div></div>

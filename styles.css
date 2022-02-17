@@ -1,0 +1,55 @@
+/* Allmänt */
+body{
+    font-family: 'Comic Sans MS', sans-serif;
+    color: #FAF8F6;
+	background-color: #543E7A;
+}
+.center{
+    margin: auto;
+    margin-bottom: 2vw;
+    width: 70%;    
+}
+
+/* Header */
+.menu{
+	margin: auto;
+	border-bottom: solid 3px #7E69A0;
+}
+#title{
+	display: inline-block;
+	margin: 0.5vw;
+	margin-left: 15%;
+	text-align:center;
+	font-size: 2vw;
+}
+#settings{
+	display: inline-block;
+	float:right;
+	margin: 0.5vw;
+	font-size: 1vw;
+}
+#settings, img{
+	width: 2.5vw;
+	height: auto;
+}
+/* Innehåll */
+.tile{
+	float:left;
+	margin: 0.2vw;
+	border: solid 3px #7E69A0;
+	border-radius: 0.5vw;
+	height: 4.2vw;
+	width: 4.2vw;
+}
+#tileBox{
+	width: 25%;
+	margin-top: 1vw;
+	height: 28vw;
+}
+#keyboard{
+	width: 30%;
+	margin-top: 3vw;
+	border: solid 3px #7E69A0;
+	height: 10vw;
+	text-align:center;
+}
