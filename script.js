@@ -22,17 +22,26 @@ $(document).ready(function () {
  
   var file = 'textFiles/lemmas_60k.txt';
 
-  var data; // string
-  var dataLines; // array
+  var rawData;
+  var rawDataLines = [];
+  var dataElements = []
 
   var rawFile = new XMLHttpRequest();
   rawFile.open("GET", file, true);
   rawFile.onreadystatechange = function () {
     if (rawFile.readyState === 4) { // local request
-      data = rawFile.responseText;
-      dataLines = data.split(" ");
+      rawData = rawFile.responseText;
+      rawDataLines = rawData.split("\r\n"); // split every line
+      //dataElements = rawDataLines.split(" +");
+      console.log(rawDataLines);
+      rawDataLines.forEach(line => {
+        dataElements.push(line.split("    "));
+      });
+
+      console.log(dataElements);
     }
   }
   rawFile.send();
+
 
 });
