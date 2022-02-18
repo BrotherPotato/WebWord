@@ -2,39 +2,37 @@
 
 
 class Word {
-    constructor(wordText, freq) {
-      this.wordText = wordText;
-      this.freq = freq;
-    }
+  constructor(wordText, freq) {
+    this.wordText = wordText;
+    this.freq = freq;
   }
+}
 
 
 var listOfWords = [];
 var solution;
 var size = 5;
 var boardState = [];
-var evaluations = []; 
+var evaluations = [];
 var rowIndex = 0;
 
 
 
-$(document).ready(function(){
-    $("#inputfile").change(function(){
-        var file = 'textFiles\lemmas_60k.txt';
-        
-        var fReader = new FileReader();
+$(document).ready(function () {
+ 
+  var file = 'textFiles/lemmas_60k.txt';
 
-        fReader.addEventListener("load", function() {
-            // this will then display a text file
-            var text = fReader.result;
-          }, false);
-            
-        fr.readAsText(file);
-    });
+  var data; // string
+  var dataLines; // array
 
-    if(text != null){
-        alert('asdasd');
+  var rawFile = new XMLHttpRequest();
+  rawFile.open("GET", file, true);
+  rawFile.onreadystatechange = function () {
+    if (rawFile.readyState === 4) { // local request
+      data = rawFile.responseText;
+      dataLines = data.split(" ");
     }
-
+  }
+  rawFile.send();
 
 });
