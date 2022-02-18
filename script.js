@@ -19,38 +19,53 @@ var rowIndex = 0;
 
 
 $(document).ready(function () {
- 
-  var file = 'textFiles/lemmas_60k.txt';
+  var dataSet = [];
 
-  var rawData;
-  var rawDataLines = [];
-  var dataElements = [];
-  var words = [];
 
-  var rawFile = new XMLHttpRequest();
-  rawFile.open("GET", file, true);
-  rawFile.onreadystatechange = function () {
-    if (rawFile.readyState === 4) { // local request
-      rawData = rawFile.responseText;
-      rawDataLines = rawData.split("\r\n"); // split every line
-      rawDataLines.pop();
-      //console.log(rawDataLines);
-      //dataElements = rawDataLines.split(" +");
-      //console.log(rawDataLines);
-      rawDataLines.forEach(line => {
-        dataElements.push(line.split("    "));
-      });
-      //console.log(dataElements)
-      dataElements.forEach(line => {
-        var word = {text:line[1], freq:line[3]};
-        words.push(word);
-      });
-      words.shift();
-      console.log(words);
-      //console.log(dataElements);
+  loadNewDataset(5);
+
+  function loadNewDataset(size){
+    var file = 'textFiles/lemmas_60k.txt';
+
+    var rawData;
+    var rawDataLines = [];
+    var dataElements = [];
+    var words = [];
+  
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, true);
+    rawFile.onreadystatechange = function () {
+      if (rawFile.readyState === 4) { // local request
+        rawData = rawFile.responseText;
+        rawDataLines = rawData.split("\r\n"); // split every line
+        rawDataLines.shift();
+        rawDataLines.pop();
+        console.log(rawDataLines);
+        //dataElements = rawDataLines.split(" +");
+        //console.log(rawDataLines);
+        rawDataLines.forEach(line => {
+          dataElements.push(line.split("    "));
+        });
+        //console.log(dataElements)
+        dataElements.forEach(line => {
+          var text = line[1].toUpperCase()
+          
+          if(text.length == size){
+            var word = {text:text, freq:line[3]};
+            dataSet.push(word);
+          }
+          //words.push(word);
+        });
+        //words.shift();
+        console.log(dataSet);
+        //console.log(dataElements);
+      }
     }
+    rawFile.send();
+
+    
+
   }
-  rawFile.send();
 
 
 });
