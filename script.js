@@ -24,7 +24,8 @@ $(document).ready(function () {
 
   var rawData;
   var rawDataLines = [];
-  var dataElements = []
+  var dataElements = [];
+  var words = [];
 
   var rawFile = new XMLHttpRequest();
   rawFile.open("GET", file, true);
@@ -32,13 +33,21 @@ $(document).ready(function () {
     if (rawFile.readyState === 4) { // local request
       rawData = rawFile.responseText;
       rawDataLines = rawData.split("\r\n"); // split every line
+      rawDataLines.pop();
+      //console.log(rawDataLines);
       //dataElements = rawDataLines.split(" +");
-      console.log(rawDataLines);
+      //console.log(rawDataLines);
       rawDataLines.forEach(line => {
         dataElements.push(line.split("    "));
       });
-
-      console.log(dataElements);
+      //console.log(dataElements)
+      dataElements.forEach(line => {
+        var word = {text:line[1], freq:line[3]};
+        words.push(word);
+      });
+      words.shift();
+      console.log(words);
+      //console.log(dataElements);
     }
   }
   rawFile.send();
