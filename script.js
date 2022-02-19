@@ -155,8 +155,16 @@ $(document).ready(function () {
 		} else {
 			return false;
 		}
-		
-		
+	}
+
+  function isWord(input) {
+		var isWord = false;
+		for (var i = 0; i < listOfWords.size(); i++) {
+			if(input.equals(listOfWords.get(i).getWord())) {
+				isWord = true;
+			}
+		}
+		return isWord;
 	}
 
 });
