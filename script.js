@@ -108,4 +108,44 @@ $(document).ready(function () {
     console.log(solution);
   }
 
+  function evaluation(word) {
+		solutionLetters = solution.split("");
+		solution = new String[solutionLetters.length];
+		testLetters = word.split("");
+		
+		letterDone = new boolean[solutionLetters.length];
+		solutionLetterDone = new boolean[solutionLetters.length]; 
+
+		for (var i = 0; i < testLetters.length; i++) {
+				if(testLetters[i].equals(solutionLetters[i])) {
+						solution[i] = "correct";
+						letterDone[i] = true;
+						solutionLetterDone[i] = true;
+				}
+		}
+		
+		for (var i = 0; i < testLetters.length; i++) {
+			if(letterDone[i] == false) {
+				for (var j = 0; j < solutionLetters.length; j++) {
+					if(testLetters[i].equals(solutionLetters[j]) && solutionLetterDone[j] == false) {
+						solution[i] = "present";
+						letterDone[i] = true;
+						solutionLetterDone[j] = true;
+						break;
+					}
+				}
+			}
+		}
+		
+		for (var i = 0; i < testLetters.length; i++) {
+			if(letterDone[i] == false) {
+				solution[i] = "absent";
+			}
+		}
+		
+		
+		return solution;
+	}
+
+
 });
