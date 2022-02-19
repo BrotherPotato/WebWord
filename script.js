@@ -110,7 +110,7 @@ $(document).ready(function () {
 
   function evaluation(word) {
 		solutionLetters = solution.split("");
-		solution = new String[solutionLetters.length];
+		charEvaluation = new String[solutionLetters.length];
 		testLetters = word.split("");
 		
 		letterDone = new boolean[solutionLetters.length];
@@ -118,7 +118,7 @@ $(document).ready(function () {
 
 		for (var i = 0; i < testLetters.length; i++) {
 				if(testLetters[i].equals(solutionLetters[i])) {
-						solution[i] = "correct";
+            charEvaluation[i] = "correct";
 						letterDone[i] = true;
 						solutionLetterDone[i] = true;
 				}
@@ -128,7 +128,7 @@ $(document).ready(function () {
 			if(letterDone[i] == false) {
 				for (var j = 0; j < solutionLetters.length; j++) {
 					if(testLetters[i].equals(solutionLetters[j]) && solutionLetterDone[j] == false) {
-						solution[i] = "present";
+						charEvaluation[i] = "present";
 						letterDone[i] = true;
 						solutionLetterDone[j] = true;
 						break;
@@ -139,13 +139,24 @@ $(document).ready(function () {
 		
 		for (var i = 0; i < testLetters.length; i++) {
 			if(letterDone[i] == false) {
-				solution[i] = "absent";
+				charEvaluation[i] = "absent";
 			}
 		}
 		
-		
-		return solution;
+		return charEvaluation;
 	}
 
+  function CorrectAnswer(word) {
+		if(solution.equals(word)) {
+			for (var i = 0; i < boardState.length; i++) {
+				System.out.println(this.boardState[i]);
+			}
+			return true;
+		} else {
+			return false;
+		}
+		
+		
+	}
 
 });
