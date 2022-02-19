@@ -21,7 +21,7 @@ var amountOfWords = 0;
 
 $(document).ready(function () {
   
-
+  prepareBoard(size);
 
   
 
