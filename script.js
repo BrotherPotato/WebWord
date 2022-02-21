@@ -24,8 +24,6 @@ $(document).ready(function () {
   
   prepareBoard(size);
 
-  
-
   function prepareBoard(size) {
 
     boardState = [6][size]; // first value row, second value char index
@@ -82,33 +80,8 @@ $(document).ready(function () {
       rowDiv6.appendChild(tilesRow6[i]);
     }
 
-
-
-
-    //var box = document.getElementById("tileBox");
-    //for (var j = 0; j < rows.length; j++) { // loops through rows
-    //  console.log(j);
-    //  rows[j] = document.createElement("div");
-    //  for (var i = 0; i < size; i++) { // loops through elements
-    //    console.log(i);
-    //    tilesRow1[j] = document.createElement("div");
-    //    boardState[j][i].classList.add("tile");
-    //    boardState[j][i].setAttribute("id", "t" + 1);
-    //    row1.appendChild(boardState[j][i]);
-    //  }
-    //  box.appendChild(rows[j]);
-    //}
-
-    
-    /*
-    CODE FOR ADDING BLOCKS
-    
-    */
-
     loadNewDataset(size); // loads listOfWords, solution, and amountOfWords
   }
-
-
 
   function loadNewDataset(size) {
     var file = 'textFiles/lemmas_60k.txt';
@@ -161,7 +134,6 @@ $(document).ready(function () {
 
   }
 
-
   function setRandomWord() {
     //console.log(amountOfWords);
 
@@ -177,6 +149,11 @@ $(document).ready(function () {
     solution = Object.values(listOfWords[randomIndex])[0];
     console.log(solution);
   }
+
+  $('body').keypress(function (e) {
+    console.log('keypress', String.fromCharCode( e.which ));
+  });
+
 
   function evaluation(word) {
 		solutionLetters = solution.split("");
