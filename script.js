@@ -11,7 +11,7 @@ class Word {
 
 var listOfWords = [];
 var solution;
-var size = 5;
+var size = 6;
 var boardState = [];
 var rows = [];
 var evaluations = [];
@@ -47,37 +47,37 @@ $(document).ready(function () {
     for (let i = 0; i < size; i++) {
       tilesRow1[i] = document.createElement("div");
       tilesRow1[i].classList.add("tile");
-      tilesRow1[i].setAttribute("id", "r1t" + i);
+      tilesRow1[i].setAttribute("id", "r1t" + (i + 1));
       var rowDiv1 = document.getElementById("row1")
       rowDiv1.appendChild(tilesRow1[i]);
 
       tilesRow2[i] = document.createElement("div");
       tilesRow2[i].classList.add("tile");
-      tilesRow2[i].setAttribute("id", "r2t" + i);
+      tilesRow2[i].setAttribute("id", "r2t" + (i + 1));
       var rowDiv2 = document.getElementById("row2")
       rowDiv2.appendChild(tilesRow2[i]);
 
       tilesRow3[i] = document.createElement("div");
       tilesRow3[i].classList.add("tile");
-      tilesRow3[i].setAttribute("id", "r3t" + i);
+      tilesRow3[i].setAttribute("id", "r3t" + (i + 1));
       var rowDiv3 = document.getElementById("row3")
       rowDiv3.appendChild(tilesRow3[i]);
 
       tilesRow4[i] = document.createElement("div");
       tilesRow4[i].classList.add("tile");
-      tilesRow4[i].setAttribute("id", "r4t" + i);
+      tilesRow4[i].setAttribute("id", "r4t" + (i + 1));
       var rowDiv4 = document.getElementById("row4")
       rowDiv4.appendChild(tilesRow4[i]);
 
       tilesRow5[i] = document.createElement("div");
       tilesRow5[i].classList.add("tile");
-      tilesRow5[i].setAttribute("id", "r5t" + i);
+      tilesRow5[i].setAttribute("id", "r5t" + (i + 1));
       var rowDiv5 = document.getElementById("row5")
       rowDiv5.appendChild(tilesRow5[i]);
 
       tilesRow6[i] = document.createElement("div");
       tilesRow6[i].classList.add("tile");
-      tilesRow6[i].setAttribute("id", "r6t" + i);
+      tilesRow6[i].setAttribute("id", "r6t" + (i + 1));
       var rowDiv6 = document.getElementById("row6")
       rowDiv6.appendChild(tilesRow6[i]);
     }
@@ -148,7 +148,7 @@ $(document).ready(function () {
         //words.shift();
         //console.log(listOfWords);
         //console.log(dataElements);
-        //console.log(listOfWords);
+        console.log(listOfWords);
         //console.log(Object.values(listOfWords[0])[0]);
         //console.log(amountOfWords);
         setRandomWord();
