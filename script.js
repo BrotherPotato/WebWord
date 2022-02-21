@@ -13,6 +13,7 @@ var listOfWords = [];
 var solution;
 var size = 5;
 var boardState = [];
+var rows = [];
 var evaluations = [];
 var rowIndex = 0;
 var amountOfWords = 0;
@@ -28,9 +29,30 @@ $(document).ready(function () {
   function prepareBoard(size) {
 
     boardState = [6][size]; // first value row, second value char index
+    rows = [6];
 
-    /*
+    //var row1 = document.getElementById("row1");
+
+    //var t1 = document.createElement("div");
+    //t1.classList.add("tile");
+    //t1.setAttribute("id", "t" + 1);
+    //row1.appendChild(t1);
+
+    var box = document.getElementById("tileBox");
+    for (let j = 0; j < rows.length; j++) { // loops through rows
+      rows[j] = document.createElement("div");
+      for (let i = 0; i < boardState[j].length; i++) { // loops through elements
+        
+        boardState[j][i] = document.createElement("div");
+        boardState[j][i].classList.add("tile");
+        boardState[j][i].setAttribute("id", "t" + 1);
+        row1.appendChild(boardState[j][i]);
+      }
+      box.appendChild(rows[j]);
+    }
+
     
+    /*
     CODE FOR ADDING BLOCKS
     
     */
