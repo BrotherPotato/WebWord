@@ -11,7 +11,7 @@ class Word {
 
 var listOfWords = [];
 var solution;
-var size = 6;
+var size = 5;
 var boardState = [];
 var rows = [];
 var evaluations = [];
