@@ -29,8 +29,14 @@ $(document).ready(function () {
   function prepareBoard(size) {
 
     boardState = [6][size]; // first value row, second value char index
+    tilesRow1 = new Array();
+    tilesRow2 = new Array();
+    tilesRow3 = new Array();
+    tilesRow4 = new Array();
+    tilesRow5 = new Array();
+    tilesRow6 = new Array();
     rows = [6];
-
+    console.log(boardState);
     //var row1 = document.getElementById("row1");
 
     //var t1 = document.createElement("div");
@@ -38,18 +44,60 @@ $(document).ready(function () {
     //t1.setAttribute("id", "t" + 1);
     //row1.appendChild(t1);
 
-    var box = document.getElementById("tileBox");
-    for (let j = 0; j < rows.length; j++) { // loops through rows
-      rows[j] = document.createElement("div");
-      for (let i = 0; i < boardState[j].length; i++) { // loops through elements
-        
-        boardState[j][i] = document.createElement("div");
-        boardState[j][i].classList.add("tile");
-        boardState[j][i].setAttribute("id", "t" + 1);
-        row1.appendChild(boardState[j][i]);
-      }
-      box.appendChild(rows[j]);
+    for (let i = 0; i < size; i++) {
+      tilesRow1[i] = document.createElement("div");
+      tilesRow1[i].classList.add("tile");
+      tilesRow1[i].setAttribute("id", "r1t" + i);
+      var rowDiv1 = document.getElementById("row1")
+      rowDiv1.appendChild(tilesRow1[i]);
+
+      tilesRow2[i] = document.createElement("div");
+      tilesRow2[i].classList.add("tile");
+      tilesRow2[i].setAttribute("id", "r2t" + i);
+      var rowDiv2 = document.getElementById("row2")
+      rowDiv2.appendChild(tilesRow2[i]);
+
+      tilesRow3[i] = document.createElement("div");
+      tilesRow3[i].classList.add("tile");
+      tilesRow3[i].setAttribute("id", "r3t" + i);
+      var rowDiv3 = document.getElementById("row3")
+      rowDiv3.appendChild(tilesRow3[i]);
+
+      tilesRow4[i] = document.createElement("div");
+      tilesRow4[i].classList.add("tile");
+      tilesRow4[i].setAttribute("id", "r4t" + i);
+      var rowDiv4 = document.getElementById("row4")
+      rowDiv4.appendChild(tilesRow4[i]);
+
+      tilesRow5[i] = document.createElement("div");
+      tilesRow5[i].classList.add("tile");
+      tilesRow5[i].setAttribute("id", "r5t" + i);
+      var rowDiv5 = document.getElementById("row5")
+      rowDiv5.appendChild(tilesRow5[i]);
+
+      tilesRow6[i] = document.createElement("div");
+      tilesRow6[i].classList.add("tile");
+      tilesRow6[i].setAttribute("id", "r6t" + i);
+      var rowDiv6 = document.getElementById("row6")
+      rowDiv6.appendChild(tilesRow6[i]);
     }
+
+
+
+
+    //var box = document.getElementById("tileBox");
+    //for (var j = 0; j < rows.length; j++) { // loops through rows
+    //  console.log(j);
+    //  rows[j] = document.createElement("div");
+    //  for (var i = 0; i < size; i++) { // loops through elements
+    //    console.log(i);
+    //    tilesRow1[j] = document.createElement("div");
+    //    boardState[j][i].classList.add("tile");
+    //    boardState[j][i].setAttribute("id", "t" + 1);
+    //    row1.appendChild(boardState[j][i]);
+    //  }
+    //  box.appendChild(rows[j]);
+    //}
 
     
     /*
