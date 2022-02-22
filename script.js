@@ -11,7 +11,7 @@ class Word {
 
 var listOfWords = [];
 var solution;
-var size = 5;
+var size = 7;
 var boardState = [];
 var rows = [];
 var evaluations = [];
@@ -159,20 +159,13 @@ $(document).ready(function () {
     console.log('keydown', String.fromCharCode( e.which ));
     var inputChar = String.fromCharCode(e.which);
     if(e.which == 8 && colIndex > 0){ // backspace
-      console.log("8888")
+      //console.log("8888")
       colIndex--;
-
       let tileDiv = document.getElementById("r" + (rowIndex + 1) + "t" + (colIndex + 1));
       tileDiv.innerHTML = '';
-      //tileDiv.childNodes.remove;
-      //let tilePara = 
-      //tilePara.innerText  = "";
-      //tilePara.remove;
 
-      // remove one character from current row if possible
     } else if(e.which == 13 && colIndex == size){
-      console.log("131313113");
-      // is a word
+      //console.log("131313113");
       rowIndex++;
       colIndex = 0;
     }
