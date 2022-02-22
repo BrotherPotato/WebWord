@@ -16,6 +16,7 @@ var boardState = [];
 var rows = [];
 var evaluations = [];
 var rowIndex = 0;
+var colIndex = 0;
 var amountOfWords = 0;
 
 //var dataSet = [];
@@ -26,7 +27,11 @@ $(document).ready(function () {
 
   function prepareBoard(size) {
 
-    boardState = [6][size]; // first value row, second value char index
+    //boardState = [6][size]; // first value row, second value char index
+    for (let i = 0; i < 6; i++) {
+      boardState[i] = new Array(size);
+    }
+
     tilesRow1 = new Array();
     tilesRow2 = new Array();
     tilesRow3 = new Array();
@@ -150,10 +155,40 @@ $(document).ready(function () {
     console.log(solution);
   }
 
-  $('body').keypress(function (e) {
-    console.log('keypress', String.fromCharCode( e.which ));
+  $('body').keydown(function (e) {
+    console.log('keydown', String.fromCharCode( e.which ));
+    var inputChar = String.fromCharCode(e.which);
+    if(e.which == 8){ // backspace
+      console.log("8888")
+      colIndex--;
+      // remove one character from current row if possible
+    } else if(e.which == 13 && colIndex == size){
+      console.log("131313113");
+      // is a word
+      rowIndex++;
+      colIndex = 0;
+    }
+    
+    else if(isLetter(inputChar) && colIndex < size) {
+      boardState[rowIndex][colIndex] = inputChar;
+
+      let tempPara = document.createElement("p");
+      tempPara.innerText = inputChar;
+
+      //let rowDiv = document.getElementById("row" + (rowIndex + 1));
+      //let tileDiv = rowDiv.childNodes[colIndex]
+      let tileDiv = document.getElementById("r" + (rowIndex + 1) + "t" + (colIndex + 1));
+      tileDiv.appendChild(tempPara);
+
+      colIndex++;
+      console.log(boardState);
+    }
+
   });
 
+  function isLetter(char) {
+    return char.toLowerCase() != char.toUpperCase();
+  }
 
   function evaluation(word) {
 		solutionLetters = solution.split("");
