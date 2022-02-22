@@ -11,7 +11,7 @@ class Word {
 
 var listOfWords = [];
 var solution;
-var size = 7;
+var size = 5;
 var boardState = [];
 var rows = [];
 var evaluations = [];
@@ -163,9 +163,14 @@ $(document).ready(function () {
       colIndex--;
       let tileDiv = document.getElementById("r" + (rowIndex + 1) + "t" + (colIndex + 1));
       tileDiv.innerHTML = '';
+      boardState[rowIndex][colIndex] = null;
 
-    } else if(e.which == 13 && colIndex == size){
+    } else if(e.which == 13 && colIndex == size && isWord(boardState[rowIndex].join(''))){ // enter
       //console.log("131313113");
+      //console.log(boardState[rowIndex].join(''));
+      evaluation(boardState[rowIndex].join(''));
+
+
       rowIndex++;
       colIndex = 0;
     }
@@ -192,35 +197,40 @@ $(document).ready(function () {
   }
 
   function evaluation(word) {
-		solutionLetters = solution.split("");
-		charEvaluation = new String[solutionLetters.length];
-		testLetters = word.split("");
+		var solutionLetters = solution.split("");
+    console.log(solutionLetters);
+		var charEvaluation = new Array(size);
+		var testLetters = word.split("");
+    console.log(testLetters);
 		
-		letterDone = new boolean[solutionLetters.length];
-		solutionLetterDone = new boolean[solutionLetters.length]; 
+		letterDone = new Array(size).fill(false);
+		solutionLetterDone = new Array(size).fill(false);
 
-		for (var i = 0; i < testLetters.length; i++) {
-				if(testLetters[i].equals(solutionLetters[i])) {
+		for (let i = 0; i < testLetters.length; i++) {
+				if(testLetters[i] === solutionLetters[i]) {
             charEvaluation[i] = "correct";
 						letterDone[i] = true;
 						solutionLetterDone[i] = true;
+            document.getElementById("r" + (rowIndex + 1) + "t" + (i + 1)).style.backgroundColor = 'green';
 				}
 		}
 		
-		for (var i = 0; i < testLetters.length; i++) {
+		for (let i = 0; i < testLetters.length; i++) {
 			if(letterDone[i] == false) {
-				for (var j = 0; j < solutionLetters.length; j++) {
-					if(testLetters[i].equals(solutionLetters[j]) && solutionLetterDone[j] == false) {
+				for (let j = 0; j < solutionLetters.length; j++) {
+					if(testLetters[i] === solutionLetters[j] && solutionLetterDone[j] == false) {
 						charEvaluation[i] = "present";
 						letterDone[i] = true;
 						solutionLetterDone[j] = true;
+            document.getElementById("r" + (rowIndex + 1) + "t" + (i + 1)).style.backgroundColor = 'yellow';
 						break;
 					}
 				}
 			}
+      console.log(charEvaluation);
 		}
 		
-		for (var i = 0; i < testLetters.length; i++) {
+		for (let i = 0; i < testLetters.length; i++) {
 			if(letterDone[i] == false) {
 				charEvaluation[i] = "absent";
 			}
@@ -242,8 +252,10 @@ $(document).ready(function () {
 
   function isWord(input) {
 		var isWord = false;
-		for (var i = 0; i < listOfWords.size(); i++) {
-			if(input.equals(listOfWords.get(i).getWord())) {
+    console.log(input);
+
+		for (var i = 0; i < listOfWords.length; i++) {
+			if(input == listOfWords[i].textString) {
 				isWord = true;
 			}
 		}
