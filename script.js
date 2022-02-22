@@ -158,9 +158,17 @@ $(document).ready(function () {
   $('body').keydown(function (e) {
     console.log('keydown', String.fromCharCode( e.which ));
     var inputChar = String.fromCharCode(e.which);
-    if(e.which == 8){ // backspace
+    if(e.which == 8 && colIndex > 0){ // backspace
       console.log("8888")
       colIndex--;
+
+      let tileDiv = document.getElementById("r" + (rowIndex + 1) + "t" + (colIndex + 1));
+      tileDiv.innerHTML = '';
+      //tileDiv.childNodes.remove;
+      //let tilePara = 
+      //tilePara.innerText  = "";
+      //tilePara.remove;
+
       // remove one character from current row if possible
     } else if(e.which == 13 && colIndex == size){
       console.log("131313113");
