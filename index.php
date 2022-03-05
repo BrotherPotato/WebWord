@@ -1,7 +1,7 @@
 <?php include 'includeFiles/StartHead.txt';?>
     <title> Liurdle</title>
 <?php include 'includeFiles/EndHead.txt';?>
-
+<p id="coord">0:0</p>
 <div id="tileBox" class="center">
 	<div id="row1">
 		<div id = "t1" class="tile">

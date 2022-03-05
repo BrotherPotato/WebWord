@@ -169,6 +169,7 @@ $(document).ready(function () {
       //console.log("131313113");
       //console.log(boardState[rowIndex].join(''));
       evaluation(boardState[rowIndex].join(''));
+      CorrectAnswer(boardState[rowIndex].join(''))
 
 
       rowIndex++;
@@ -189,8 +190,39 @@ $(document).ready(function () {
       colIndex++;
       console.log(boardState);
     }
+    var pCoord = document.getElementById("coord");
+    var coordText = rowIndex + ":" + colIndex;
+    pCoord.innerHTML = coordText;
+
+    var prevBox = document.getElementById("r" + (rowIndex) + "t" + (colIndex));
+    if(prevBox != null){
+      prevBox.style.borderColor = "#7E69A0";
+    }
+    setRowBorder(rowIndex, "#7E69A0");
+
 
   });
+  var active = true;
+  
+  setInterval(() => {
+    var currentBox = document.getElementById("r" + (rowIndex + 1) + "t" + (colIndex + 1));
+    if(currentBox != null){
+      if(active){
+        currentBox.style.borderColor = "white";
+        active = false;
+      } else {
+        currentBox.style.borderColor = "#7E69A0";
+        active = true;
+      }
+    }
+  }, 400);
+
+  function setRowBorder(row, color){
+    //var rowDiv = document.getElementById("row" + (row + 1));
+    $("#row" + (row + 1)).children().each(function () {
+      $(this).css('border-color', color);
+    });
+  }
 
   function isLetter(char) {
     return char.toLowerCase() != char.toUpperCase();
@@ -235,19 +267,25 @@ $(document).ready(function () {
 				charEvaluation[i] = "absent";
 			}
 		}
-		
+
+    //CorrectAnswer(word);
+
 		return charEvaluation;
 	}
 
   function CorrectAnswer(word) {
-		if(solution.equals(word)) {
+		if(solution == word) {
 			for (var i = 0; i < boardState.length; i++) {
 				System.out.println(this.boardState[i]);
 			}
-			return true;
+      alert(word);
+			//return true;
 		} else {
-			return false;
+			//return false;
+      
 		}
+
+
 	}
 
   function isWord(input) {
