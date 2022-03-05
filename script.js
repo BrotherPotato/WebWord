@@ -224,7 +224,7 @@ $(document).ready(function () {
         active = true;
       }
     }
-  }, 400);
+  }, 600);
 
   function setRowBorder(row, color){
     //var rowDiv = document.getElementById("row" + (row + 1));
