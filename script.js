@@ -170,7 +170,7 @@ $(document).ready(function () {
       //console.log(boardState[rowIndex].join(''));
       evaluation(boardState[rowIndex].join(''));
       CorrectAnswer(boardState[rowIndex].join(''))
-
+      setRowBorder(rowIndex, "#7E69A0");
 
       rowIndex++;
       colIndex = 0;
@@ -212,6 +212,15 @@ $(document).ready(function () {
         active = false;
       } else {
         currentBox.style.borderColor = "#7E69A0";
+        active = true;
+      }
+    }
+    if(colIndex == 5){
+      if(active){
+        setRowBorder(rowIndex, "white");
+        active = false;
+      } else {
+        setRowBorder(rowIndex, "#7E69A0");
         active = true;
       }
     }
