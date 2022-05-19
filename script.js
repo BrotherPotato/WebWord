@@ -18,6 +18,7 @@ var evaluations = [];
 var rowIndex = 0;
 var colIndex = 0;
 var amountOfWords = 0;
+var namn = "asdas";
 
 //var dataSet = [];
 
@@ -46,6 +47,9 @@ $(document).ready(function () {
     //t1.classList.add("tile");
     //t1.setAttribute("id", "t" + 1);
     //row1.appendChild(t1);
+    
+    
+
 
     for (let i = 0; i < size; i++) {
       tilesRow1[i] = document.createElement("div");
