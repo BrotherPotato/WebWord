@@ -24,6 +24,10 @@ var namn = "asdas";
 
 $(document).ready(function () {
   
+
+
+  
+
   prepareBoard(size);
 
   function prepareBoard(size) {
